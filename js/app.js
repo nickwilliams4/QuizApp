@@ -110,10 +110,10 @@ function loadNextQuestion () {
     }
   const answer = selectedChoice.val();
     if(questions[currentQuestion].answer == answer){
-      // alert('That is correct!')
+      alert('That is correct!')
       score += 1;
     } else {
-      // alert('Sorry, that is incorrect!')
+      alert('Sorry, that is incorrect!')
     }
     $('input[type=radio]:checked').prop('checked', false);
     currentQuestion++;
