@@ -87,8 +87,7 @@ const resultContainer = document.getElementById('result');
 function loadQuestions () {
   $('#start').click(event => {
     event.preventDefault();
-    $('.startPage').hide();
-    $('.container').show();
+    startQuiz();
   })
 }
 $(loadQuestions);
@@ -111,10 +110,10 @@ function loadNextQuestion () {
     }
   const answer = selectedChoice.val();
     if(questions[currentQuestion].answer == answer){
-      alert('That is correct!')
+      // alert('That is correct!')
       score += 1;
     } else {
-      alert('Sorry, that is incorrect!')
+      // alert('Sorry, that is incorrect!')
     }
     $('input[type=radio]:checked').prop('checked', false);
     currentQuestion++;
@@ -133,21 +132,31 @@ function loadNextQuestion () {
       
     }
     loadQuestion(currentQuestion);
-    function updateScore() {
-      $('.score').text('Score: ' + score + '/10');
-      }
-    $(updateScore); 
+updateScore();
+
 }
 $('.next-qtn').click(event => {
   event.preventDefault();
   $(loadNextQuestion);
 })
-loadQuestion(currentQuestion);
+function updateScore() {
+  $('.score').text('Score: ' + score + '/10');
+  }
 
 function restartQuiz() {
   $('.restart').click(event => {
   event.preventDefault();
-  $(loadQuestions);
+  startQuiz();
 }) 
 }
 $(restartQuiz);
+
+function startQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  $('.startPage').hide();
+  $('.container').show();
+  $('.container-result').hide();
+  loadQuestion(currentQuestion);
+  updateScore();
+}
