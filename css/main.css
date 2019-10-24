@@ -32,7 +32,7 @@ body {
   border-radius: 20px;
 }
 
-.next-qtn {
+.next-qtn, #start, .restart {
   border: none;
   outline: none;
   background: rgba(255,25,255,0.5);
@@ -54,6 +54,24 @@ body {
   font-size: 30px;
   color: #08038C;
 }
+.startPage, .container-result {
+  font-family: -webkit-pictograph;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: rgba(255,255,255,0.5);
+  padding: 15px;
+  border: 1px solid #08038C;
+  box-shadow: 0 0 8px 3px #fff;
+  text-align: center;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #08038C;
+}
+
 
 
 
@@ -61,8 +79,8 @@ body {
 
 .startPage {
   font-family: -webkit-pictograph;
-  height: 330px;
-  width: 1000px;
+  /* height: 330px;
+  width: 1000px; */
   position: absolute;
   top: 50%;
   left: 50%;
