@@ -1,0 +1,2 @@
+# QuizApp
+This is a 10 question quiz from random subjects spanning all walks of life. The randomness will make the user think and keep them on their toes. It uses HTML, CSS, JavaScript, jQuery, and is a11y accessible.  This was the first big project I have taken on and there were many challenges along the way.  Getting the app to function properly was very time consuming I found, then having to style it to make it attractive was almost just as challenging.  I had fun creating this application and it was very rewarding to see a clean, well-functioning result.
