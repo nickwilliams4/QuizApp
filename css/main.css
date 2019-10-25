@@ -30,9 +30,10 @@ body {
   margin: 10px 0 10px 10px;
   color: #000000;
   border-radius: 20px;
+  cursor: pointer;
 }
 
-.next-qtn, #start, .restart {
+.next-qtn, #start, .restart, .nextQuestionButton {
   border: none;
   outline: none;
   background: rgba(255,25,255,0.5);
@@ -42,7 +43,6 @@ body {
   cursor: pointer;
   margin: 10px;
   top: 478px;
-  /* position: fixed; */
   right: 20px;
 }
 
@@ -61,21 +61,23 @@ body {
   box-shadow: 0 0 8px 3px #fff;
   text-align: center;
   padding-top: 20px;
-  text-align: center;
   font-size: 25px;
   text-transform: uppercase;
   color: #08038C;
 }
-
+.solution {
+  display: none;
+}
+.message {
+  font-size: 30px;
+  color: #08038C;
+}
 
 
 
 @media screen and (min-width: 850px) {
 
 .startPage {
-  
-  /* height: 330px;
-  width: 1000px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -113,8 +115,6 @@ body {
 }
 .container {
   display: inline;
-  /* height: 355px;
-  width: 1000px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -169,7 +169,6 @@ body {
   float: right;
   margin: 10px;
   top: 478px;
-  /* position: fixed; */
   right: 20px;
 }
 

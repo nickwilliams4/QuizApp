@@ -82,9 +82,10 @@ const choice4 = document.getElementById('choice4');
 const totalQuestions = questions.length;
 const nextButton = document.getElementById('nextQuestion');
 const resultContainer = document.getElementById('result');
+const nextQuestionButton = $('.nextQuestionButton');
 
 
-function loadQuestions () {
+function loadQuestions() {
   $('#start').click(event => {
     event.preventDefault();
     startQuiz();
@@ -93,7 +94,7 @@ function loadQuestions () {
 $(loadQuestions);
 
 
-function loadQuestion (questionIndex) {
+function loadQuestion(questionIndex) {
   const q = questions[questionIndex];
   $(questionElement).text((questionIndex + 1) + '. ' + q.question);
   $(choice1).text(q.choice1);
@@ -102,52 +103,40 @@ function loadQuestion (questionIndex) {
   $(choice4).text(q.choice4);
 
 }
-function loadNextQuestion () {
-  const selectedChoice = $('input[type=radio]:checked');
-    if(!selectedChoice.val()){
-      alert('Please select an answer!');
-      return;
-    }
-  const answer = selectedChoice.val();
-    if(questions[currentQuestion].answer == answer){
-      alert('That is correct!')
-      score += 1;
-    } else {
-      alert('Sorry, that is incorrect! The answer was ' + questions[currentQuestion].answer)
-    }
-    $('input[type=radio]:checked').prop('checked', false);
-    currentQuestion++;
-    if(currentQuestion == totalQuestions - 1){
-      nextButton.textContent = 'Finish';
-    }
-    if(currentQuestion == totalQuestions){
-      $('.container').hide();
+function loadNextQuestion() {
+  $('input[type=radio]:checked').prop('checked', false);
+  currentQuestion++;
+  if (currentQuestion == totalQuestions - 1) {
+    nextQuestionButton.text('Finish');
+  }
+  if (currentQuestion == totalQuestions) {
+    $('.container').hide();
+    $('.container-result').show();
+    function scoreResult() {
       $('.container-result').show();
-      function scoreResult() {
-        $('.container-result').show();
-        $('.score-result').text('You got ' + score + ' out of 10 right!');
-      }
-      $(scoreResult);
-      return;
-      
+      $('.score-result').text('You got ' + score + ' out of 10 right!');
     }
-    loadQuestion(currentQuestion);
-updateScore();
+    $(scoreResult);
+    return;
 
+  }
+  loadQuestion(currentQuestion);
+  updateScore();
+  $('.solution').hide();
 }
 $('.next-qtn').click(event => {
   event.preventDefault();
-  $(loadNextQuestion);
+  $(checkAnswer);
 })
 function updateScore() {
   $('.score').text('Score: ' + score + '/10');
-  }
+}
 
 function restartQuiz() {
   $('.restart').click(event => {
-  event.preventDefault();
-  startQuiz();
-}) 
+    event.preventDefault();
+    startQuiz();
+  })
 }
 $(restartQuiz);
 
@@ -157,6 +146,32 @@ function startQuiz() {
   $('.startPage').hide();
   $('.container').show();
   $('.container-result').hide();
+  $('.solution').hide();
+  nextQuestionButton.text('Next Question');
   loadQuestion(currentQuestion);
   updateScore();
 }
+
+
+function checkAnswer() {
+  const selectedChoice = $('input[type=radio]:checked');
+  if (!selectedChoice.val()) {
+    alert('Please select an answer!');
+    return;
+  }
+  const answer = selectedChoice.val();
+  if (questions[currentQuestion].answer == answer) {
+    $('.message').html('That is correct!')
+    score += 1;
+  } else {
+    $('.message').html('Sorry, that is incorrect! The answer was' + questions[currentQuestion][`choice${questions[currentQuestion].answer}`])
+  }
+  $('.solution').show();
+  $('.next-qtn').hide();
+}
+
+$('.nextQuestionButton').click(event => {
+  event.preventDefault();
+  loadNextQuestion();
+  $('.next-qtn').show();
+})
