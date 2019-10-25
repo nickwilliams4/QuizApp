@@ -113,7 +113,7 @@ function loadNextQuestion () {
       alert('That is correct!')
       score += 1;
     } else {
-      alert('Sorry, that is incorrect!')
+      alert('Sorry, that is incorrect! The answer was ' + questions[currentQuestion].answer)
     }
     $('input[type=radio]:checked').prop('checked', false);
     currentQuestion++;

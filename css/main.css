@@ -55,7 +55,6 @@ body {
   color: #08038C;
 }
 .startPage, .container-result {
-  font-family: -webkit-pictograph;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -78,7 +77,7 @@ body {
 @media screen and (min-width: 850px) {
 
 .startPage {
-  font-family: -webkit-pictograph;
+  
   /* height: 330px;
   width: 1000px; */
   position: absolute;
