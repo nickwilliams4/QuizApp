@@ -1,6 +1,6 @@
 const questions = [{
   'question': 'Who was the third President of the United States?',
-  'choice1': '  Geroge Washington',
+  'choice1': '  George Washington',
   'choice2': '  Thomas Jefferson',
   'choice3': '  James Monroe',
   'choice4': '  John Adams',
